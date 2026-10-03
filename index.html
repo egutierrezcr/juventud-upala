@@ -105,6 +105,7 @@ svg.mapa path:hover,svg.mapa path.sel{stroke:var(--text);stroke-width:2.6}
 .indicador-tit{font:800 1.25rem Inter;letter-spacing:-.02em}
 .indicador-sub{font-size:.95rem;color:var(--muted);margin-top:8px;max-width:52ch}
 .ranking-head{display:flex;justify-content:space-between;font:400 .7rem "Space Mono";text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:22px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.fila .val .sd{font:400 .78rem "Space Mono";color:var(--muted)}
 .fila .val small{display:block;font:400 .68rem "Space Mono";color:var(--muted);white-space:nowrap}
 .huella td.i small{display:block;font:400 .7rem "Space Mono";color:var(--muted)}
 .ranking{position:relative;margin-top:8px}
@@ -160,6 +161,11 @@ svg.mapa path:hover,svg.mapa path.sel{stroke:var(--text);stroke-width:2.6}
 .diversidad ul{padding-left:18px}
 .diversidad li{margin:6px 0}
 .diversidad .prop{margin-top:16px;border-left:2px solid var(--lima);padding-left:12px;font-size:.95rem}
+.enj{margin-top:36px}
+.enj h3{font:900 clamp(1.4rem,2.6vw,2rem) Inter;letter-spacing:-.03em;margin:6px 0 4px}
+.enj .versus{margin-top:24px}
+.enj .cambios{margin-top:26px;padding-left:18px}
+.enj .cautela{margin-top:16px;font-size:.9rem;color:var(--muted);border-left:2px solid var(--ama);padding-left:12px;max-width:75ch}
 .prensa{list-style:none;padding:0;margin:34px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0 32px}
 .prensa li{padding:14px 0;border-bottom:1px solid var(--line)}
 .prensa a{color:var(--text);text-decoration:none;font-weight:500}
@@ -182,6 +188,34 @@ details{margin-top:40px;border-top:1px solid var(--line);padding-top:18px}
 summary{cursor:pointer;font:800 1.05rem Inter}
 footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}
 
+.sel-movil,.pista{display:none}
+.huella td.i,.huella th.i{position:sticky;left:0;background:var(--bg);z-index:1}
+.hall,.graficos,.prensa{grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr))}
+@media (max-width:700px){
+  .top{position:static}
+  .selector{display:none}
+  .sel-movil{display:block;margin-top:24px}
+  .sel-movil span{display:block;font:400 .7rem "Space Mono";text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:6px}
+  .sel-movil select{width:100%;font:500 1rem "Plus Jakarta Sans";padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--bg2);color:var(--text)}
+  .fila .val small{display:none}
+  .ranking-head{gap:10px}
+  .ranking-head span:last-child{text-align:right}
+  .pista{display:block;font:400 .74rem "Space Mono";color:var(--muted);margin:18px 0 -20px}
+  .huella td.i{min-width:150px;font-size:.78rem}
+  #tablaFicha thead{display:none}
+  #tablaFicha,#tablaFicha tbody{display:block}
+  #tablaFicha tr{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 10px;padding:12px 0;border-bottom:1px solid var(--line)}
+  #tablaFicha tr.capa{display:block;border:0;padding:20px 0 0}
+  #tablaFicha td{border:0;padding:0}
+  #tablaFicha td:first-child,#tablaFicha td:last-child{grid-column:1/-1}
+  #tablaFicha td.n{text-align:left;font-size:.95rem}
+  #tablaFicha td.n::before{content:attr(data-l);display:block;font:400 .66rem "Space Mono";text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .ficha-top h2{font-size:clamp(2.2rem,11vw,3rem)}
+  .vs-bar{grid-template-columns:86px 1fr 56px}
+  .vs-row .lbl{flex-direction:column;gap:2px}
+  .diversidad{padding:20px}
+  .theme-toggle span{font-size:.78rem}
+}
 @media (max-width:900px){
   .hero-grid,.vivo,.dos{grid-template-columns:1fr}
   .hero{min-height:auto}
@@ -249,6 +283,7 @@ footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
     <div class="eyebrow">Ranking por indicador</div>
     <h2>Elegí un problema y mirá cómo se ordenan los distritos.</h2>
     <p class="intro">Arriba queda el distrito en la situación más desfavorable. En color: cian es lo más favorable dentro del cantón, magenta lo más desfavorable. Tocá un nombre o el mapa para abrir su ficha.</p>
+    <label class="sel-movil"><span>Indicador</span><select id="selMovil" aria-label="Elegir indicador"></select></label>
     <div class="selector" id="selector"></div>
     <div class="vivo">
       <div>
@@ -291,6 +326,7 @@ footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
     <div class="eyebrow">Huella de los ocho distritos</div>
     <h2>Todos los problemas, todos los distritos.</h2>
     <p class="intro">Cada columna es la huella de un distrito. Mientras más magenta, más desfavorable su situación en ese indicador comparada con el resto del cantón.</p>
+    <p class="pista">Deslizá la tabla hacia los lados para ver todos los distritos.</p>
     <div class="scroll"><table class="huella" id="tablaHuella"></table></div>
   </div>
 </section>
@@ -309,6 +345,7 @@ footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
     <div class="eyebrow">Más allá del distrito</div>
     <h2>Lo que solo se mide en la región o en el cantón.</h2>
     <p class="intro">Estos datos no bajan a distrito, pero describen problemas que viven las personas jóvenes de Upala. Cada tarjeta dice a qué territorio corresponde.</p>
+    <div id="enj" class="enj"></div>
     <div class="hall" id="regionCards" style="margin-top:28px"></div>
     <div class="diversidad" id="diversidad"></div>
   </div>
@@ -456,6 +493,9 @@ function selector(){
   const capas=[...new Set(D.indicadores.map(i=>i.capa))];
   document.getElementById('selector').innerHTML=capas.map(c=>`<div class="grupo"><span>${c}</span>${D.indicadores.filter(i=>i.capa===c).map(i=>`<button class="pill" type="button" data-i="${i.id}" aria-pressed="false">${i.nombre}</button>`).join('')}</div>`).join('');
   document.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{actual=b.dataset.i;ranking();});
+  const sm=document.getElementById('selMovil');
+  sm.innerHTML=capas.map(c=>`<optgroup label="${c}">`+D.indicadores.filter(i=>i.capa===c).map(i=>`<option value="${i.id}">${i.nombre}</option>`).join('')+'</optgroup>').join('');
+  sm.onchange=()=>{actual=sm.value;ranking();};
 }
 const lista=document.getElementById('rankingList');
 lista.innerHTML=IDS.map(d=>`<div class="fila" data-d="${d}" tabindex="0" role="button"><span class="r"></span><span class="nm">${D.distritos[d]}</span><span class="val"></span><span class="linea"></span></div>`).join('');
@@ -464,17 +504,19 @@ const mRank=dibujarMapa('mapaRank',d=>{elegir(d);document.getElementById('ficha'
 function ranking(){
   const i=ind(actual), p=pos(i), alto=innerWidth<900?52:64;
   document.querySelectorAll('.pill').forEach(b=>{const on=b.dataset.i===actual;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
+  document.getElementById('selMovil').value=actual;
   document.getElementById('indTit').textContent=i.nombre;
   document.getElementById('indSub').textContent=i.lectura;
-  document.getElementById('rhIzq').textContent=i.peor ? 'Arriba: la situación más desfavorable' : 'De mayor a menor';
+  document.getElementById('rhIzq').textContent=i.peor ? 'Arriba: lo más desfavorable' : 'De mayor a menor';
+  document.getElementById('rhDer').textContent=i.sufijo;
   const vals=IDS.map(d=>i.valores[d]).filter(v=>v!=null), mx=Math.max(...vals);
   lista.style.height=(IDS.length*alto)+'px';
   lista.querySelectorAll('.fila').forEach(f=>{
-    const d=f.dataset.d, r=p.rango[d]||IDS.length, c=color(i,p.t[d]);
+    const d=f.dataset.d, r=p.rango[d]||IDS.length, c=p.t[d]==null?css('--muted'):color(i,p.t[d]);
     f.style.top=((r-1)*alto)+'px';
     f.querySelector('.r').textContent=p.rango[d]?p.rango[d]+'.º':'-';
     f.querySelector('.nm').style.color=c;
-    f.querySelector('.val').innerHTML= i.valores[d]==null ? '<small>sin dato</small>' : `${fmt(i.valores[d],i.dec)}<small>${i.sufijo}</small>`;
+    f.querySelector('.val').innerHTML= i.valores[d]==null ? '<span class="sd">sin dato</span>' : `${fmt(i.valores[d],i.dec)}<small>${i.sufijo}</small>`;
     const ln=f.querySelector('.linea'); ln.style.width=`calc((100% - 46px) * ${i.valores[d]==null?0:i.valores[d]/mx})`; ln.style.background=c;
     f.classList.toggle('sel',d===distrito);
   });
@@ -497,7 +539,7 @@ function ficha(){
     if(i.capa!==capa){capa=i.capa;h+=`<tr class="capa"><td colspan="5">${capa}</td></tr>`;}
     const p=pos(i), r=p.rango[distrito];
     const lugar = i.peor && r ? `<span class="punto"><i style="background:${escala(p.t[distrito])}"></i>${r===1?'el más desfavorable':r===8?'el más favorable':r+'.º de 8'}</span>` : '<span class="u">contexto</span>';
-    h+=`<tr><td>${i.nombre}<span class="u">${i.lectura}</span></td><td class="n">${fmt(i.valores[distrito],i.dec)}</td><td class="n">${fmt(i.canton,i.dec)}</td><td class="n">${fmt(i.pais,i.dec)}</td><td>${lugar}</td></tr>`;
+    h+=`<tr><td>${i.nombre}<span class="u">${i.lectura}</span></td><td class="n" data-l="Distrito">${fmt(i.valores[distrito],i.dec)}</td><td class="n" data-l="Cantón">${fmt(i.canton,i.dec)}</td><td class="n" data-l="País">${fmt(i.pais,i.dec)}</td><td>${lugar}</td></tr>`;
   });
   document.querySelector('#tablaFicha tbody').innerHTML=h;
 }
@@ -538,9 +580,22 @@ function charts(){
   graficos.push(new Chart(document.getElementById('gDec'),{type:'bar',data:{labels:S.decomisos.anios,datasets:[['Marihuana','--lima'],['Crack','--mag'],['Cocaína','--cian']].map(([k,c])=>({label:k,data:S.decomisos[k],backgroundColor:css(c)}))},options:{...op,scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true}}}}));
 }
 
+/* encuesta de juventudes: Huetar Norte frente al pais */
+function enj(){
+  const E=D.enj; if(!E) return;
+  const fil=E.filas.map(r=>{const mx=Math.max(r.hn,r.pais)*1.1, malo=r.peor==='alto'?r.hn>r.pais:r.peor==='bajo'?r.hn<r.pais:null;
+    const col= malo===null?css('--ama'):malo?css('--mag'):css('--cian');
+    const lect= r.peor==='alto'?'más es peor':r.peor==='bajo'?'menos es peor':'contexto';
+    return `<div class="vs-row"><div class="lbl"><span>${r.txt}</span><span>${lect} · ${r.ref}</span></div>
+      <div class="vs-bar"><span>Huetar Norte</span><div class="t"><div class="f" style="width:${r.hn/mx*100}%;background:${col}"></div></div><span class="n">${fmt(r.hn,1)}%</span></div>
+      <div class="vs-bar"><span>Costa Rica</span><div class="t"><div class="f" style="width:${r.pais/mx*100}%;background:${css('--muted')}"></div></div><span class="n">${fmt(r.pais,1)}%</span></div></div>`;}).join('');
+  document.getElementById('enj').innerHTML=`<div class="ambito">${E.ambito} · Señal</div><h3>${E.titulo}</h3><div class="versus">${fil}</div><ul class="cambios">${E.cambios.map(x=>`<li>${x}</li>`).join('')}</ul><p class="cautela">${E.cautela}</p><p class="src">Fuente: ${E.fuente}</p>`;
+}
+
 /* región, diversidad y prensa */
 const etiqueta={'hecho operativo':'Hecho','hipótesis':'Hipótesis','señal':'Señal'};
-document.getElementById('regionCards').innerHTML=(D.contexto||[]).map(x=>`<article class="hallazgo"><div class="ambito">${x.ambito} · ${etiqueta[x.verdad]}</div><h4>${x.titulo}</h4><ul>${x.puntos.map(p=>`<li>${p}</li>`).join('')}</ul><p class="src">Fuente: ${x.fuente}</p></article>`).join('');
+const tarjetas=[...(D.upala2010?[{...D.upala2010,verdad:'señal',puntos:[...D.upala2010.puntos,D.upala2010.nota]}]:[]),...(D.contexto||[])];
+document.getElementById('regionCards').innerHTML=tarjetas.map(x=>`<article class="hallazgo"><div class="ambito">${x.ambito} · ${etiqueta[x.verdad]}</div><h4>${x.titulo}</h4><ul>${x.puntos.map(p=>`<li>${p}</li>`).join('')}</ul><p class="src">Fuente: ${x.fuente}</p></article>`).join('');
 if(D.diversidad){const v=D.diversidad;document.getElementById('diversidad').innerHTML=`<h3>${v.titulo}</h3><p>${v.texto}</p><ul>${v.puntos.map(p=>`<li>${p}</li>`).join('')}</ul><p class="prop"><b>Propuesta:</b> ${v.propuesta}</p><p class="src">Fuentes: ${v.fuente}</p>`;}
 const fecha=f=>{if(!f)return 'sin fecha';const [a,m]=f.split('-');return ['ene','feb','mar','abr','may','jun','jul','ago','set','oct','nov','dic'][+m-1]+'. '+a;};
 document.getElementById('listaPrensa').innerHTML=(D.prensa||[]).map(n=>`<li><a href="${n.url}" target="_blank" rel="noopener">${n.texto}</a><span class="meta${n.institucional?' inst':''}">${n.medio} · ${fecha(n.fecha)} · ${n.lugar}${n.institucional?' · comunicado institucional':''}</span></li>`).join('');
@@ -551,7 +606,7 @@ document.getElementById('huecos').innerHTML=D.huecos.map(h=>`<li><b>${h.hueco}.<
 document.querySelector('#tablaFuentes tbody').innerHTML=D.indicadores.map(i=>`<tr><td>${i.nombre}</td><td>${i.fuente}</td><td>${i.nota||''}</td></tr>`).join('');
 document.getElementById('gen').textContent=D.generado;
 
-function repintar(){colorearMapa(mHero,ids,false);document.getElementById('legHero').style.background=`linear-gradient(90deg,${escala(0)},${escala(.5)},${escala(1)})`;versus();ranking();ficha();huella();charts();}
+function repintar(){enj();colorearMapa(mHero,ids,false);document.getElementById('legHero').style.background=`linear-gradient(90deg,${escala(0)},${escala(.5)},${escala(1)})`;versus();ranking();ficha();huella();charts();}
 let rz; addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(ranking,150);});
 selector(); hallazgos(); repintar();
 })();

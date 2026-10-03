@@ -90,3 +90,39 @@ if nota not in c['tensiones']:
     c['tensiones'].append(nota)
 json.dump(c, open(P, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
 print('ok', len(c['prensa']), 'notas')
+
+# --- IV Encuesta Nacional de Juventudes 2026: Huetar Norte frente al pais (CPJ) ---
+c = json.load(open(P, encoding='utf-8'))
+c['enj'] = {
+    'titulo': 'Huetar Norte frente al país',
+    'ambito': 'IV Encuesta Nacional de Juventudes 2026, región Huetar Norte (incluye Upala), personas de 15 a 35 años',
+    'filas': [
+        {'txt': 'Estudia actualmente', 'hn': 40.5, 'pais': 45.3, 'peor': 'bajo', 'ref': 'Gráfico 2, p. 20'},
+        {'txt': 'Sin trabajo remunerado y sin buscar trabajo en el último mes', 'hn': 82.2, 'pais': 62.9, 'peor': 'alto', 'ref': 'Cuadro 8, p. 27'},
+        {'txt': 'Tiene internet en la casa', 'hn': 78.7, 'pais': 89.1, 'peor': 'bajo', 'ref': 'Cuadro 22, p. 52'},
+        {'txt': 'Está embarazada o su pareja lo está', 'hn': 6.4, 'pais': 3.0, 'peor': 'alto', 'ref': 'Cuadro 18, p. 46'},
+        {'txt': 'Tiene hijos o hijas', 'hn': 46.3, 'pais': 38.5, 'peor': None, 'ref': 'Cuadro 18, p. 46'},
+        {'txt': 'Tiene acceso a instalaciones deportivas cerradas en su comunidad', 'hn': 31.6, 'pais': 53.3, 'peor': 'bajo', 'ref': 'Cuadro 24, p. 55'},
+        {'txt': 'Ha tenido deseos de quitarse la vida', 'hn': 8.0, 'pais': 15.0, 'peor': 'alto', 'ref': 'Gráfico 6, p. 39'},
+        {'txt': 'Ha intentado quitarse la vida', 'hn': 5.0, 'pais': 9.1, 'peor': 'alto', 'ref': 'Gráfico 6, p. 39'},
+        {'txt': 'Tomó alcohol en el último mes', 'hn': 21.3, 'pais': 35.2, 'peor': 'alto', 'ref': 'Gráfico 7, p. 41'},
+        {'txt': 'Vivió al menos una situación de acoso en su centro educativo', 'hn': 44.7, 'pais': 53.6, 'peor': 'alto', 'ref': 'Gráfico 3, p. 23'},
+    ],
+    'cambios': [
+        'Entre 2018 y 2026, la proporción de jóvenes de Huetar Norte que estudia subió de 32,1% a 40,5%.',
+        'El embarazo joven bajó a la mitad en el país (de 6,6% a 3,0%), pero no en Huetar Norte (de 6,5% a 6,4%).',
+    ],
+    'cautela': 'Huetar Norte reporta menos deseos de quitarse la vida, consumo de alcohol y acoso que el país. Puede ser una diferencia real o que se declare menos; el informe no publica márgenes de error por región. La muestra de Huetar Norte fue de 1.244 personas.',
+    'fuente': 'Consejo de la Persona Joven, IV Encuesta Nacional de Juventudes 2026 (informe de agosto de 2026) y III Encuesta Nacional de Juventudes 2018 (Cuadro 45 y anexo regional)'}
+c['upala2010'] = {
+    'titulo': 'Lo que dijeron las personas jóvenes de Upala en 2010',
+    'ambito': 'Encuesta cantonal de juventud de Upala, 855 personas de 15 a 35 años, julio de 2010',
+    'puntos': [
+        'Los problemas del cantón que más señalaron: falta de empleo (76,5%), pobreza (58,2%) y drogadicción (53,3%).',
+        'El 48,3% estudiaba y el 20,9% de quienes tenían de 15 a 17 años no estudiaba.',
+        'El 42,0% de quienes trabajaban no tenía ninguna garantía laboral.',
+        'El 70,8% percibía al menos una forma de discriminación hacia jóvenes en el cantón; la más mencionada, por ser migrante (49,2%).'],
+    'nota': 'Es la única encuesta de juventud hecha en el cantón. Tiene 16 años: sirve como línea de base para repetirla.',
+    'fuente': 'Consejo de la Persona Joven, Encuesta cantonal de juventud de Upala 2010 (Gráficos 1, 11, 22 y 23)'}
+json.dump(c, open(P, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+print('enj ok')
