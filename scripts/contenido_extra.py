@@ -126,3 +126,27 @@ c['upala2010'] = {
     'fuente': 'Consejo de la Persona Joven, Encuesta cantonal de juventud de Upala 2010 (Gráficos 1, 11, 22 y 23)'}
 json.dump(c, open(P, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
 print('enj ok')
+
+# --- Estadisticas vitales: mortalidad joven del canton y fecundidad adolescente ---
+c = json.load(open(P, encoding='utf-8'))
+H = {h['id']: h for h in c['hallazgos']}
+p_fec = ('Fecundidad de adolescentes de 15 a 19 años en 2020-2025: 58 nacimientos por cada 1.000 en Delicias y 45 en San José (Pizote), '
+         'frente a 33 en el cantón, 26,8 en Alajuela y 24,6 en el país.')
+if p_fec not in H['H2']['puntos']:
+    H['H2']['puntos'].insert(2, p_fec)
+p_pad = ('En los nacimientos de madres de 15 a 17 años en el cantón (2020-2025), el padre no está declarado en 147 de 196. '
+         'De los 49 con padre conocido, 33 tenían 20 años o más. La edad sola no prueba una relación impropia, pero es una señal de alerta.')
+if p_pad not in H['H2']['puntos']:
+    H['H2']['puntos'].append(p_pad)
+c['contexto'] = [x for x in c['contexto'] if x['titulo'] != 'Muertes de personas jóvenes']
+c['contexto'].insert(0, {
+    'titulo': 'Muertes de personas jóvenes', 'ambito': 'Cantón de Upala, personas de 10 a 35 años, 2020-2025', 'verdad': 'señal',
+    'puntos': [
+        'Los accidentes de tránsito son la principal causa externa: 41 muertes, 27,4 por cada 100.000 jóvenes por año, frente a 18,3 en el país.',
+        'Suicidios: 16 muertes, 10,7 por cada 100.000, frente a 9,0 en el país.',
+        'Homicidios: 5 muertes, 3,3 por cada 100.000, muy por debajo del país (21,2).',
+        'Los hombres jóvenes mueren 3 veces más que las mujeres: 129 frente a 44 por cada 100.000.',
+        'El 15,5% de las muertes de jóvenes (20 de 129) fue de personas nicaragüenses.'],
+    'fuente': 'INEC, estadísticas vitales (REDATAM, defunciones por residencia) y proyecciones de población 2025; tasas: cálculo propio. 2025 es preliminar.'})
+json.dump(c, open(P, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+print('vitales ok')

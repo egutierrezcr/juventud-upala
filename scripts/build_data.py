@@ -160,6 +160,25 @@ def extras():
     res.append(ind_simple('nac15', 'Salud', 'alto', 0, 'nacimientos', fte, 'Cada caso de una madre menor de 15 años es, por ley, un delito sexual. Números pequeños.',
         {d: int(n.loc[d, '<15']) for d in DIST}, int(n.loc['21300', '<15']), None,
         'Nacimientos de madres menores de 15 años (2020-2025)', 'nacimientos', 'Cantidad de nacimientos de niñas menores de 15 años entre 2020 y 2025. Más es peor.'))
+    # Fecundidad adolescente y mortalidad joven 2020-2025 (INEC, REDATAM; poblacion: proyecciones INEC 2025)
+    vt = pd.read_csv(os.path.join(capas, 'vitales_datos.csv'), dtype=str)
+    def vit(ind, ge, sexo):
+        x = vt[(vt.indicador == ind) & (vt.grupo_edad == ge) & (vt.anio == '2020-2025') & (vt.sexo == sexo)]
+        x = x.drop_duplicates('distrito_codigo').set_index('distrito_codigo').valor.astype(float)
+        return {d: float(x[d]) for d in DIST}, float(x['21300']), float(x['00000'])
+    f_vit = 'INEC, estadísticas vitales (REDATAM) y proyecciones de población 2025; 2020-2025 (cálculo propio)'
+    v, c, pa = vit('tasa_fecundidad_15_19', '15-19', 'mujeres')
+    res.append(ind_simple('fec1519', 'Salud', 'alto', 2, 'por 1.000', f_vit, 'Provincia de Alajuela: 26,8. 2025 es preliminar.', v, c, pa,
+        'Fecundidad de adolescentes de 15 a 19 años (2020-2025)', 'nacimientos por 1.000 adolescentes',
+        'Nacimientos por cada 1.000 mujeres de 15 a 19 años, promedio anual 2020-2025. Más alto es peor.'))
+    v, c, pa = vit('tasa_mortalidad_total', '10-35', 'ambos')
+    res.append(ind_simple('mort', 'Salud', 'alto', 1, 'por 100.000', f_vit, 'Entre 5 y 43 muertes por distrito en seis años: números pequeños, leer con cautela. Los hombres mueren 3 veces más que las mujeres (cantón: 129 contra 44).', v, c, pa,
+        'Muertes de personas de 10 a 35 años (2020-2025)', 'muertes por 100.000 jóvenes',
+        'Muertes de personas de 10 a 35 años por cada 100.000, promedio anual 2020-2025. Más alto es peor.'))
+    v, c, pa = vit('tasa_mortalidad_causas_externas', '10-35', 'ambos')
+    res.append(ind_simple('mort_ext', 'Salud', 'alto', 1, 'por 100.000', f_vit, 'Causas externas: tránsito, suicidio, homicidio, ahogamiento y otros accidentes. Entre 0 y 23 muertes por distrito: números pequeños.', v, c, pa,
+        'Muertes de jóvenes por causas externas (2020-2025)', 'muertes por 100.000 jóvenes',
+        'Muertes de personas de 10 a 35 años por accidentes, suicidios u homicidios, por cada 100.000, promedio anual 2020-2025. Más alto es peor.'))
     # Abstencionismo, segunda ronda presidencial 2022 (TSE)
     e = pd.read_csv(os.path.join(capas, 'extra_datos.csv'), dtype=str)
     a = e[(e.indicador == 'Abstencionismo') & (e.sexo == 'todos') & (e.anio == '2022') & (e.grupo_edad == 'todos (18 y mas)')].set_index('distrito_codigo').valor.astype(float)

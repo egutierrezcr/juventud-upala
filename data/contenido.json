@@ -40,9 +40,11 @@
       "puntos": [
         "Entre 2020 y 2025, el 17,0% de los nacimientos en Delicias fue de madres menores de 20 años y el 7,6% de madres menores de 18. En el cantón son 11,7% y 5,2%.",
         "San José (Pizote) es el segundo distrito: 12,4% de los nacimientos de madres menores de 20 años y 5,9% de menores de 18.",
+        "Fecundidad de adolescentes de 15 a 19 años en 2020-2025: 58 nacimientos por cada 1.000 en Delicias y 45 en San José (Pizote), frente a 33 en el cantón, 26,8 en Alajuela y 24,6 en el país.",
         "El Censo 2022 coincide: 6,1% de las adolescentes de San José (Pizote) y 5,6% de las de Delicias ya son madres, frente a 3,2% en el país.",
         "En el cantón nacieron 26 bebés de niñas menores de 15 años entre 2020 y 2025: 6 en Delicias, 6 en San José (Pizote) y 6 en el distrito Upala. Por ley, cada caso es un delito sexual.",
-        "La tendencia baja en todos los distritos: en el cantón, los nacimientos de madres menores de 20 años pasaron de 24,5% (2010-2014) a 11,7% (2020-2025)."
+        "La tendencia baja en todos los distritos: en el cantón, los nacimientos de madres menores de 20 años pasaron de 24,5% (2010-2014) a 11,7% (2020-2025).",
+        "En los nacimientos de madres de 15 a 17 años en el cantón (2020-2025), el padre no está declarado en 147 de 196. De los 49 con padre conocido, 33 tenían 20 años o más. La edad sola no prueba una relación impropia, pero es una señal de alerta."
       ]
     },
     {
@@ -148,6 +150,19 @@
     "señal": "1 fuente"
   },
   "contexto": [
+    {
+      "titulo": "Muertes de personas jóvenes",
+      "ambito": "Cantón de Upala, personas de 10 a 35 años, 2020-2025",
+      "verdad": "señal",
+      "puntos": [
+        "Los accidentes de tránsito son la principal causa externa: 41 muertes, 27,4 por cada 100.000 jóvenes por año, frente a 18,3 en el país.",
+        "Suicidios: 16 muertes, 10,7 por cada 100.000, frente a 9,0 en el país.",
+        "Homicidios: 5 muertes, 3,3 por cada 100.000, muy por debajo del país (21,2).",
+        "Los hombres jóvenes mueren 3 veces más que las mujeres: 129 frente a 44 por cada 100.000.",
+        "El 15,5% de las muertes de jóvenes (20 de 129) fue de personas nicaragüenses."
+      ],
+      "fuente": "INEC, estadísticas vitales (REDATAM, defunciones por residencia) y proyecciones de población 2025; tasas: cálculo propio. 2025 es preliminar."
+    },
     {
       "titulo": "Violencia en los centros educativos de la región",
       "ambito": "Dirección Regional de Educación Zona Norte-Norte, 2023",
