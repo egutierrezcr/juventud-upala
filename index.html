@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juventud de Upala</title>
+<meta name="description" content="Análisis por distrito de los problemas que afectan a las personas jóvenes del cantón de Upala, Alajuela, Costa Rica: condiciones de vida, educación, salud, seguridad y drogas, con fuentes oficiales y nivel de certeza.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07080d; --bg2:#0e1018; --panel:rgba(255,255,255,.035); --line:rgba(255,255,255,.09);
+  --text:#e9ecf5; --muted:rgba(233,236,245,.58);
+  --cian:#00f5d4; --ama:#ffea00; --mag:#ff10f0; --lima:#39ff14; --rosa:#ff006e;
+  --glow:0 0 18px;
+}
+body.light{
+  --bg:#f3f4f8; --bg2:#e7e9f0; --panel:rgba(10,12,30,.03); --line:rgba(10,12,30,.12);
+  --text:#14162a; --muted:rgba(20,22,42,.6);
+  --cian:#00a693; --ama:#c9a100; --mag:#c4009f; --lima:#2b9a12; --rosa:#d1004f;
+  --glow:0 0 0;
+}
+/* Paleta sobria: tonos apagados, sin brillo */
+body[data-paleta="sobria"]{--cian:#5fb3ad;--ama:#d8bb72;--mag:#d9776a;--lima:#9cc58a;--rosa:#e08a95;--glow:0 0 0}
+body.light[data-paleta="sobria"]{--cian:#2c7a77;--ama:#a8842a;--mag:#b0503f;--lima:#4d8a3c;--rosa:#a8445a}
+/* Paleta accesible: basada en Okabe-Ito, legible con daltonismo */
+body[data-paleta="accesible"]{--cian:#56b4e9;--ama:#f0e442;--mag:#e3762b;--lima:#2fbf8f;--rosa:#cc79a7;--glow:0 0 0}
+body.light[data-paleta="accesible"]{--cian:#0072b2;--ama:#c8a800;--mag:#d55e00;--lima:#009e73;--rosa:#b0548a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:300 17px/1.65 "Plus Jakarta Sans",system-ui,sans-serif;transition:background-color .3s,color .3s;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Inter,system-ui,sans-serif;margin:0}
+b,strong{font-weight:600}
+a{color:var(--cian)}
+:focus-visible{outline:2px solid var(--ama);outline-offset:3px}
+.mono{font-family:"Space Mono",monospace}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* barra superior */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:58px}
+.marca{font:900 1rem Inter;letter-spacing:-.02em;white-space:nowrap}
+.marca i{font-style:normal;color:var(--cian)}
+.ajustes{margin-left:auto;order:2;display:flex;align-items:center;gap:8px;flex:none}
+.theme-toggle,.paleta select{height:34px;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;font:500 .82rem "Plus Jakarta Sans";cursor:pointer}
+.theme-toggle{display:inline-flex;align-items:center;gap:7px;padding:0 13px}
+.theme-toggle svg{width:16px;height:16px}
+.theme-toggle .luna{display:none} body.light .theme-toggle .luna{display:block} body.light .theme-toggle .sol{display:none}
+.paleta{display:inline-flex;align-items:center;gap:6px;font:400 .7rem "Space Mono";text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.paleta select{padding:0 10px;text-transform:none;letter-spacing:0}
+.paleta option{background:var(--bg2);color:var(--text)}
+.muestra{display:inline-flex;gap:2px}
+.muestra i{width:8px;height:8px;border-radius:50%}
+@media (max-width:760px){
+  .top .wrap{flex-wrap:wrap;height:auto;padding-top:8px;padding-bottom:6px;row-gap:4px}
+  nav{width:100%}
+  .paleta>span.t{display:none}
+}
+nav{order:3;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav a{color:var(--muted);text-decoration:none;font:500 .86rem "Plus Jakarta Sans";padding:6px 10px;border-radius:8px;white-space:nowrap}
+nav a:hover{color:var(--text)}
+
+section{padding:88px 0}
+.eyebrow{font:400 .78rem "Space Mono";text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:18px}
+h2{font-weight:900;font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.045em;line-height:1;max-width:18ch}
+.intro{color:var(--muted);max-width:60ch;margin:18px 0 0}
+
+/* hero */
+.hero{padding:56px 0 40px;min-height:calc(100vh - 58px);display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
+.hero h1{font-weight:900;font-size:clamp(2.6rem,6.6vw,5.6rem);line-height:.92;letter-spacing:-.055em}
+.hero h1 span{color:var(--mag);text-shadow:var(--glow) color-mix(in srgb,var(--mag) 45%,transparent)}
+.hero p{color:var(--muted);max-width:46ch;margin:26px 0 0;font-size:1.05rem}
+.hero .pie{margin-top:28px;font:400 .8rem "Space Mono";color:var(--muted)}
+.mapa-hero{position:relative}
+.norte{font:400 .72rem "Space Mono";letter-spacing:.12em;text-transform:uppercase;color:var(--rosa);text-align:center;margin-bottom:6px}
+svg.mapa{width:100%;height:auto;display:block;overflow:visible}
+svg.mapa path{stroke:var(--bg);stroke-width:1.4;transition:fill .5s,opacity .5s,filter .3s;cursor:pointer}
+svg.mapa path:hover,svg.mapa path.sel{stroke:var(--text);stroke-width:2.6}
+.hero svg.mapa path{opacity:0}
+.hero svg.mapa.on path{opacity:1}
+.leyenda{display:flex;align-items:center;gap:10px;font:400 .74rem "Space Mono";color:var(--muted);margin-top:12px}
+.leyenda .barra{flex:1;height:6px;border-radius:3px}
+.tip{position:fixed;pointer-events:none;z-index:30;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:.85rem;opacity:0;transition:opacity .15s}
+.tip b{font-family:Inter;font-weight:800}
+
+/* Upala contra Costa Rica */
+.versus{display:grid;gap:22px;margin-top:40px;max-width:860px}
+.vs-row .lbl{display:flex;justify-content:space-between;gap:12px;font-size:.95rem;margin-bottom:8px}
+.vs-row .lbl span:last-child{font:400 .78rem "Space Mono";color:var(--muted);white-space:nowrap}
+.vs-bar{display:grid;grid-template-columns:110px 1fr 64px;align-items:center;gap:10px;font:400 .78rem "Space Mono";margin:4px 0}
+.vs-bar .t{height:10px;background:var(--bg2);border-radius:5px;overflow:hidden}
+.vs-bar .f{height:100%;border-radius:5px}
+.vs-bar .n{text-align:right}
+
+/* ranking vivo */
+.selector{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:34px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.grupo{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.grupo>span{font:400 .7rem "Space Mono";text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-right:4px}
+.pill{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:999px;padding:5px 12px;font:500 .8rem "Plus Jakarta Sans";cursor:pointer;transition:background .2s,color .2s}
+.pill:hover{border-color:var(--muted)}
+.pill.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+.vivo{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;margin-top:34px;align-items:start}
+.indicador-tit{font:800 1.25rem Inter;letter-spacing:-.02em}
+.indicador-sub{font-size:.95rem;color:var(--muted);margin-top:8px;max-width:52ch}
+.ranking-head{display:flex;justify-content:space-between;font:400 .7rem "Space Mono";text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:22px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.fila .val small{display:block;font:400 .68rem "Space Mono";color:var(--muted);white-space:nowrap}
+.huella td.i small{display:block;font:400 .7rem "Space Mono";color:var(--muted)}
+.ranking{position:relative;margin-top:8px}
+.fila{position:absolute;left:0;right:0;height:64px;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;cursor:pointer;transition:top .7s cubic-bezier(.6,.05,.25,1)}
+.fila .r{font:400 .8rem "Space Mono";color:var(--muted)}
+.fila .nm{font:900 clamp(1.5rem,3.3vw,2.55rem) Inter;letter-spacing:-.045em;line-height:1;white-space:nowrap;transition:color .5s}
+.fila .val{font:700 1rem "Space Mono";text-align:right}
+.fila .linea{position:absolute;left:46px;bottom:8px;height:2px;border-radius:1px;transition:width .7s cubic-bezier(.6,.05,.25,1),background .5s;opacity:.7}
+.fila.sel .nm{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.refs{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px 18px;font:400 .8rem "Space Mono";color:var(--muted)}
+.nota{margin-top:14px;font-size:.88rem;color:var(--muted);border-left:2px solid var(--ama);padding-left:12px}
+.fuente{font-size:.8rem;color:var(--muted);margin-top:10px}
+
+/* ficha */
+.ficha-top{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px}
+.ficha-top h2{font-size:clamp(2.6rem,7vw,5.4rem)}
+.perfil{font-size:1.15rem;max-width:58ch;margin:20px 0 32px}
+.dist-sel{display:flex;flex-wrap:wrap;gap:6px}
+.tabla{width:100%;border-collapse:collapse;font-size:.92rem}
+.tabla th{font:400 .7rem "Space Mono";text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+.tabla td{padding:11px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tabla td.n,.tabla th.n{text-align:right;font-family:"Space Mono";white-space:nowrap}
+.tabla tr.capa td{font:800 .72rem Inter;text-transform:uppercase;letter-spacing:.14em;color:var(--cian);padding-top:26px}
+.u{display:block;font-size:.76rem;color:var(--muted)}
+.punto{display:inline-flex;align-items:center;gap:8px;font:400 .78rem "Space Mono";white-space:nowrap}
+.punto i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.scroll{overflow-x:auto}
+
+/* huella */
+.huella{border-collapse:separate;border-spacing:3px;margin-top:34px;min-width:820px}
+.huella th{font:400 .68rem "Space Mono";text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:6px 4px;text-align:center;vertical-align:bottom}
+.huella th.i{text-align:left}
+.huella td{font:700 .76rem "Space Mono";text-align:center;padding:9px 6px;border-radius:6px;color:#07080d}
+.huella td.i{font:400 .86rem "Plus Jakarta Sans";color:var(--text);text-align:left;padding-left:0;min-width:230px}
+
+/* certeza */
+.escalon{margin-top:46px}
+.escalon h3{display:flex;align-items:baseline;gap:14px;font:800 1.05rem Inter;letter-spacing:-.01em;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.escalon h3 small{font:400 .76rem "Space Mono";color:var(--muted)}
+.marca-v{width:12px;height:12px;border-radius:50%;flex:none;align-self:center}
+.hall{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:28px;margin-top:22px}
+.hallazgo h4{font:800 1.3rem/1.15 Inter;letter-spacing:-.025em;margin:0 0 12px}
+.hallazgo ul{margin:0;padding-left:18px}
+.hallazgo li{margin:6px 0;font-size:.95rem}
+.hallazgo .src{font:400 .74rem "Space Mono";color:var(--muted);margin-top:12px}
+.btn{margin-top:12px;background:none;border:1px solid var(--line);color:var(--text);border-radius:999px;padding:6px 14px;font:500 .82rem "Plus Jakarta Sans";cursor:pointer}
+.btn:hover{border-color:var(--text)}
+
+/* region, diversidad y prensa (estilos) */
+.ambito{font:400 .74rem "Space Mono";color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.diversidad{margin-top:56px;border:1px solid var(--line);border-radius:18px;padding:28px;background:var(--panel)}
+.diversidad h3{font:900 clamp(1.4rem,2.6vw,2rem) Inter;letter-spacing:-.03em;margin-bottom:10px}
+.diversidad ul{padding-left:18px}
+.diversidad li{margin:6px 0}
+.diversidad .prop{margin-top:16px;border-left:2px solid var(--lima);padding-left:12px;font-size:.95rem}
+.prensa{list-style:none;padding:0;margin:34px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0 32px}
+.prensa li{padding:14px 0;border-bottom:1px solid var(--line)}
+.prensa a{color:var(--text);text-decoration:none;font-weight:500}
+.prensa a:hover{color:var(--cian);text-decoration:underline}
+.prensa .meta{display:block;font:400 .74rem "Space Mono";color:var(--muted);margin-top:4px}
+.prensa .inst{color:var(--ama)}
+
+/* tendencias (estilos) */
+.graficos{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px 32px;margin-top:40px}
+.graf h3{font:800 1.05rem Inter;letter-spacing:-.01em}
+.graf .chart{position:relative;height:250px;margin-top:12px}
+.graf .src{font:400 .74rem "Space Mono";color:var(--muted);margin-top:8px}
+
+/* límites (estilos) */
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px}
+.dos h3{font:800 1.1rem Inter;margin-bottom:10px}
+.dos ul{padding-left:18px;margin:0}
+.dos li{margin:8px 0;font-size:.95rem}
+details{margin-top:40px;border-top:1px solid var(--line);padding-top:18px}
+summary{cursor:pointer;font:800 1.05rem Inter}
+footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}
+
+@media (max-width:900px){
+  .hero-grid,.vivo,.dos{grid-template-columns:1fr}
+  .hero{min-height:auto}
+  .fila{height:52px}
+  section{padding:64px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .hero svg.mapa path{opacity:1}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="marca">Juventud <i>Upala</i></div>
+    <div class="ajustes">
+      <button class="theme-toggle" id="tema" type="button" aria-pressed="false">
+        <svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <span id="temaTxt">Modo claro</span>
+      </button>
+      <label class="paleta"><span class="t">Colores</span><span class="muestra" aria-hidden="true"><i style="background:var(--cian)"></i><i style="background:var(--ama)"></i><i style="background:var(--mag)"></i></span>
+        <select id="paleta" aria-label="Paleta de colores">
+          <option value="neon">Neón</option>
+          <option value="sobria">Sobria</option>
+          <option value="accesible">Accesible (daltonismo)</option>
+        </select>
+      </label>
+    </div>
+    <nav aria-label="Secciones">
+      <a href="#ranking">Ranking</a><a href="#ficha">Distritos</a><a href="#huella">Huella</a>
+      <a href="#hallazgos">Hallazgos</a><a href="#region">Región</a><a href="#tendencias">Tendencias</a><a href="#prensa">Prensa</a><a href="#limites">Fuentes</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Análisis especial · Cantón de Upala, Alajuela</div>
+      <h1>¿Dónde le pesa más a la <span>juventud</span> de Upala?</h1>
+      <p>Ocho distritos en la frontera norte, comparados en condiciones de vida, educación, salud, seguridad y drogas. Cada cifra trae su fuente y su nivel de certeza.</p>
+      <div class="pie" id="heroPie"></div>
+    </div>
+    <div class="mapa-hero">
+      <div class="norte">Frontera con Nicaragua ↑</div>
+      <svg class="mapa" id="mapaHero" role="img" aria-label="Mapa de los ocho distritos de Upala coloreados según el Índice de Desarrollo Social 2023"></svg>
+      <div class="leyenda"><span>IDS más alto</span><div class="barra" id="legHero"></div><span>más bajo</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contexto" style="padding-top:24px">
+  <div class="wrap">
+    <div class="eyebrow">El cantón frente al país</div>
+    <h2>Upala arranca en desventaja.</h2>
+    <div class="versus" id="versus"></div>
+  </div>
+</section>
+
+<section id="ranking">
+  <div class="wrap">
+    <div class="eyebrow">Ranking por indicador</div>
+    <h2>Elegí un problema y mirá cómo se ordenan los distritos.</h2>
+    <p class="intro">Arriba queda el distrito en la situación más desfavorable. En color: cian es lo más favorable dentro del cantón, magenta lo más desfavorable. Tocá un nombre o el mapa para abrir su ficha.</p>
+    <div class="selector" id="selector"></div>
+    <div class="vivo">
+      <div>
+        <div class="indicador-tit" id="indTit"></div>
+        <div class="indicador-sub" id="indSub"></div>
+        <div class="ranking-head"><span id="rhIzq">Lugar y distrito</span><span id="rhDer">Valor</span></div>
+        <div class="ranking" id="rankingList"></div>
+      </div>
+      <div>
+        <svg class="mapa" id="mapaRank" role="img" aria-label="Mapa de Upala coloreado según el indicador elegido"></svg>
+        <div class="refs" id="refs"></div>
+        <div class="nota" id="nota" hidden></div>
+        <div class="fuente" id="fuente"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ficha">
+  <div class="wrap">
+    <div class="ficha-top">
+      <div>
+        <div class="eyebrow">Ficha del distrito</div>
+        <h2 id="fichaNombre"></h2>
+      </div>
+      <div class="dist-sel" id="distSel"></div>
+    </div>
+    <p class="perfil" id="perfil"></p>
+    <div class="scroll">
+      <table class="tabla" id="tablaFicha">
+        <thead><tr><th>Indicador</th><th class="n">Distrito</th><th class="n">Cantón</th><th class="n">País</th><th>Lugar en el cantón</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="huella">
+  <div class="wrap">
+    <div class="eyebrow">Huella de los ocho distritos</div>
+    <h2>Todos los problemas, todos los distritos.</h2>
+    <p class="intro">Cada columna es la huella de un distrito. Mientras más magenta, más desfavorable su situación en ese indicador comparada con el resto del cantón.</p>
+    <div class="scroll"><table class="huella" id="tablaHuella"></table></div>
+  </div>
+</section>
+
+<section id="hallazgos">
+  <div class="wrap">
+    <div class="eyebrow">Lo que dicen los datos juntos</div>
+    <h2>Hallazgos, ordenados por certeza.</h2>
+    <p class="intro">Un patrón gana certeza cuando lo confirman fuentes independientes: una fuente es una señal, dos una hipótesis y tres o más un hecho.</p>
+    <div id="escalones"></div>
+  </div>
+</section>
+
+<section id="region">
+  <div class="wrap">
+    <div class="eyebrow">Más allá del distrito</div>
+    <h2>Lo que solo se mide en la región o en el cantón.</h2>
+    <p class="intro">Estos datos no bajan a distrito, pero describen problemas que viven las personas jóvenes de Upala. Cada tarjeta dice a qué territorio corresponde.</p>
+    <div class="hall" id="regionCards" style="margin-top:28px"></div>
+    <div class="diversidad" id="diversidad"></div>
+  </div>
+</section>
+
+<section id="tendencias">
+  <div class="wrap">
+    <div class="eyebrow">Series del cantón</div>
+    <h2>Lo que cambió en los últimos años.</h2>
+    <div class="graficos">
+      <div class="graf"><h3>Nacimientos en madres de 15 a 19 años</h3><div class="chart"><canvas id="gMadres" aria-label="Gráfico de nacimientos en madres de 15 a 19 años por año"></canvas></div><p class="src" id="sMadres"></p></div>
+      <div class="graf"><h3>Exclusión en secundaria (%)</h3><div class="chart"><canvas id="gExcl" aria-label="Gráfico de exclusión en secundaria, Upala y Costa Rica"></canvas></div><p class="src" id="sExcl"></p></div>
+      <div class="graf"><h3>Denuncias al OIJ por año</h3><div class="chart"><canvas id="gDen" aria-label="Gráfico de denuncias al OIJ por año"></canvas></div><p class="src" id="sDen"></p></div>
+      <div class="graf"><h3>Eventos de decomiso de drogas</h3><div class="chart"><canvas id="gDec" aria-label="Gráfico de eventos de decomiso por tipo de droga"></canvas></div><p class="src" id="sDec"></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="prensa">
+  <div class="wrap">
+    <div class="eyebrow">Lo que dice la prensa</div>
+    <h2>Temas que aparecen en las noticias.</h2>
+    <p class="intro">Una selección de notas de 2017 a 2026 sobre la juventud de Upala. Sirven para detectar temas, no como fuente de cifras. Los comunicados de instituciones se marcan en amarillo.</p>
+    <ul class="prensa" id="listaPrensa"></ul>
+  </div>
+</section>
+
+<section id="limites">
+  <div class="wrap">
+    <div class="eyebrow">Límites y fuentes</div>
+    <h2>Lo que estos datos no dicen.</h2>
+    <div class="dos">
+      <div><h3>Leer con cuidado</h3><ul id="tens"></ul></div>
+      <div><h3>Lo que falta y cómo conseguirlo</h3><ul id="huecos"></ul></div>
+    </div>
+    <details>
+      <summary>Fuente de cada indicador</summary>
+      <div class="scroll"><table class="tabla" id="tablaFuentes" style="margin-top:14px"><thead><tr><th>Indicador</th><th>Fuente</th><th>Nota</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Versión preliminar en revisión. Datos generados el <span class="mono" id="gen"></span> a partir de publicaciones de INEC, MIDEPLAN, MEP, Ministerio de Salud, OIJ, Observatorio de la Violencia, ICD, MSP y PNUD.</p>
+    <p><a href="https://egutierrezcr.github.io">egutierrezcr.github.io</a></p>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script src="data/datos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function(){
+const D = window.DATOS, IDS = Object.keys(D.distritos);
+const css = n => getComputedStyle(document.body).getPropertyValue(n).trim();
+const fmt = (v,dec) => v==null ? 'sin dato' : v.toLocaleString('es-CR',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+const ind = id => D.indicadores.find(i=>i.id===id);
+const reducido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let actual='nbi', distrito='21306', graficos=[], reorden;
+
+/* tema */
+const btn=document.getElementById('tema');
+function aplicarTema(claro){
+  document.body.classList.toggle('light',claro);
+  document.getElementById('temaTxt').textContent = claro ? 'Modo oscuro' : 'Modo claro';
+  btn.setAttribute('aria-pressed', claro);
+}
+try{ aplicarTema(localStorage.getItem('tema-upala')==='claro'); }catch(e){}
+const selPal=document.getElementById('paleta');
+function aplicarPaleta(p){ if(!['neon','sobria','accesible'].includes(p)) p='neon'; document.body.dataset.paleta=p; selPal.value=p; }
+try{ aplicarPaleta(localStorage.getItem('paleta-upala')||'neon'); }catch(e){ aplicarPaleta('neon'); }
+selPal.onchange=()=>{ aplicarPaleta(selPal.value); try{localStorage.setItem('paleta-upala',selPal.value);}catch(e){} repintar(); };
+btn.onclick=()=>{ const c=!document.body.classList.contains('light'); aplicarTema(c); try{localStorage.setItem('tema-upala',c?'claro':'oscuro');}catch(e){} repintar(); };
+
+/* color: 0 favorable, 1 desfavorable */
+const rgb=h=>{h=h.replace('#','');return [0,2,4].map(i=>parseInt(h.substr(i,2),16));};
+const mix=(a,b,t)=>{const A=rgb(a),B=rgb(b);return 'rgb('+A.map((x,i)=>Math.round(x+(B[i]-x)*t)).join(',')+')';};
+const escala=t=> t<.5 ? mix(css('--cian'),css('--ama'),t*2) : mix(css('--ama'),css('--mag'),(t-.5)*2);
+const neutra=t=> mix(css('--bg2'),css('--cian'),.2+.8*t);
+function pos(i){
+  const v=IDS.map(d=>i.valores[d]).filter(x=>x!=null), mn=Math.min(...v), mx=Math.max(...v), t={};
+  IDS.forEach(d=>{const x=i.valores[d]; if(x==null){t[d]=null;return;} let k=mx===mn?.5:(x-mn)/(mx-mn); if(i.peor==='bajo')k=1-k; t[d]=k;});
+  const orden=IDS.filter(d=>t[d]!=null).sort((a,b)=> i.peor ? t[b]-t[a] : i.valores[b]-i.valores[a]);
+  const rango={}; orden.forEach((d,k)=>rango[d]=k+1);
+  return {t,orden,rango};
+}
+const color=(i,t)=> t==null ? css('--line') : (i.peor ? escala(t) : neutra(t));
+
+/* mapa SVG propio */
+const feats=D.geo.features;
+let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+const recorrer=(c,f)=> typeof c[0]==='number' ? f(c) : c.forEach(k=>recorrer(k,f));
+feats.forEach(f=>recorrer(f.geometry.coordinates,([x,y])=>{x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}));
+const k=Math.cos((y0+y1)/2*Math.PI/180), W=600, H=Math.round(W*(y1-y0)/((x1-x0)*k));
+const px=([x,y])=>[((x-x0)*k/((x1-x0)*k)*W).toFixed(1),((y1-y)/(y1-y0)*H).toFixed(1)];
+const ruta=g=>{const polys=g.type==='Polygon'?[g.coordinates]:g.coordinates;return polys.map(p=>p.map(r=>'M'+r.map(c=>px(c).join(',')).join('L')+'Z').join('')).join('');};
+const tip=document.getElementById('tip');
+function dibujarMapa(id,alClic){
+  const s=document.getElementById(id);
+  s.setAttribute('viewBox',`-4 -4 ${W+8} ${H+8}`);
+  s.innerHTML=feats.map(f=>`<path d="${ruta(f.geometry)}" data-d="${f.properties.dta}" tabindex="0" aria-label="${D.distritos[f.properties.dta]}"></path>`).join('');
+  s.querySelectorAll('path').forEach(p=>{
+    p.addEventListener('click',()=>alClic(p.dataset.d));
+    p.addEventListener('keydown',e=>{if(e.key==='Enter')alClic(p.dataset.d);});
+    p.addEventListener('mousemove',e=>{tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY+14)+'px';});
+    p.addEventListener('mouseleave',()=>tip.style.opacity=0);
+  });
+  return s;
+}
+function colorearMapa(s,i,conSel){
+  const p=pos(i);
+  s.querySelectorAll('path').forEach(el=>{
+    const d=el.dataset.d; el.style.fill=color(i,p.t[d]);
+    el.classList.toggle('sel',conSel && d===distrito);
+    el.onmouseenter=()=>{tip.innerHTML=`<b>${D.distritos[d]}</b><br><span class="mono">${fmt(i.valores[d],i.dec)}</span> ${i.sufijo}`;tip.style.opacity=1;};
+  });
+}
+
+/* hero */
+const mHero=dibujarMapa('mapaHero',d=>{elegir(d);document.getElementById('ficha').scrollIntoView();});
+const ids=ind('ids');
+colorearMapa(mHero,ids,false);
+document.getElementById('legHero').style.background=`linear-gradient(90deg,${escala(0)},${escala(.5)},${escala(1)})`;
+const q1=IDS.filter(d=>ids.valores[d]<50).length;
+document.getElementById('heroPie').textContent=`${q1} de 8 distritos en el quintil más bajo del Índice de Desarrollo Social del país (MIDEPLAN, 2023).`;
+if(!reducido){ mHero.querySelectorAll('path').forEach((p,j)=>p.style.transitionDelay=(j*110)+'ms'); requestAnimationFrame(()=>setTimeout(()=>mHero.classList.add('on'),150)); } else mHero.classList.add('on');
+
+/* cantón contra país */
+function versus(){
+  const filas=[['nbi','Hogares con al menos una carencia','más es peor'],['aseg','Población asegurada en la CCSS','menos es peor'],['internet','Viviendas con internet','menos es peor'],['secund','Personas de 15 años o más con secundaria o más','menos es peor'],['madres','Mujeres adolescentes con hijos','más es peor']];
+  document.getElementById('versus').innerHTML=filas.map(([id,txt,lect])=>{
+    const i=ind(id), mx=Math.max(i.canton,i.pais)*1.1;
+    const malo = i.peor==='alto' ? i.canton>i.pais : i.canton<i.pais;
+    return `<div class="vs-row"><div class="lbl"><span>${txt}</span><span>${lect}</span></div>
+      <div class="vs-bar"><span>Upala</span><div class="t"><div class="f" style="width:${i.canton/mx*100}%;background:${malo?css('--mag'):css('--cian')}"></div></div><span class="n">${fmt(i.canton,1)}%</span></div>
+      <div class="vs-bar"><span>Costa Rica</span><div class="t"><div class="f" style="width:${i.pais/mx*100}%;background:${css('--muted')}"></div></div><span class="n">${fmt(i.pais,1)}%</span></div></div>`;
+  }).join('');
+}
+
+/* ranking vivo */
+function selector(){
+  const capas=[...new Set(D.indicadores.map(i=>i.capa))];
+  document.getElementById('selector').innerHTML=capas.map(c=>`<div class="grupo"><span>${c}</span>${D.indicadores.filter(i=>i.capa===c).map(i=>`<button class="pill" type="button" data-i="${i.id}" aria-pressed="false">${i.nombre}</button>`).join('')}</div>`).join('');
+  document.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{actual=b.dataset.i;ranking();});
+}
+const lista=document.getElementById('rankingList');
+lista.innerHTML=IDS.map(d=>`<div class="fila" data-d="${d}" tabindex="0" role="button"><span class="r"></span><span class="nm">${D.distritos[d]}</span><span class="val"></span><span class="linea"></span></div>`).join('');
+lista.querySelectorAll('.fila').forEach(f=>{f.onclick=()=>{elegir(f.dataset.d);document.getElementById('ficha').scrollIntoView();}; f.onkeydown=e=>{if(e.key==='Enter')f.click();};});
+const mRank=dibujarMapa('mapaRank',d=>{elegir(d);document.getElementById('ficha').scrollIntoView();});
+function ranking(){
+  const i=ind(actual), p=pos(i), alto=innerWidth<900?52:64;
+  document.querySelectorAll('.pill').forEach(b=>{const on=b.dataset.i===actual;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});
+  document.getElementById('indTit').textContent=i.nombre;
+  document.getElementById('indSub').textContent=i.lectura;
+  document.getElementById('rhIzq').textContent=i.peor ? 'Arriba: la situación más desfavorable' : 'De mayor a menor';
+  const vals=IDS.map(d=>i.valores[d]).filter(v=>v!=null), mx=Math.max(...vals);
+  lista.style.height=(IDS.length*alto)+'px';
+  lista.querySelectorAll('.fila').forEach(f=>{
+    const d=f.dataset.d, r=p.rango[d]||IDS.length, c=color(i,p.t[d]);
+    f.style.top=((r-1)*alto)+'px';
+    f.querySelector('.r').textContent=p.rango[d]?p.rango[d]+'.º':'-';
+    f.querySelector('.nm').style.color=c;
+    f.querySelector('.val').innerHTML= i.valores[d]==null ? '<small>sin dato</small>' : `${fmt(i.valores[d],i.dec)}<small>${i.sufijo}</small>`;
+    const ln=f.querySelector('.linea'); ln.style.width=`calc((100% - 46px) * ${i.valores[d]==null?0:i.valores[d]/mx})`; ln.style.background=c;
+    f.classList.toggle('sel',d===distrito);
+  });
+  clearTimeout(reorden); reorden=setTimeout(()=>{[...lista.children].sort((a,b)=>parseInt(a.style.top)-parseInt(b.style.top)).forEach(n=>lista.appendChild(n));}, reducido?0:760);
+  colorearMapa(mRank,i,true);
+  const r=[]; if(i.canton!=null) r.push('Cantón: '+fmt(i.canton,i.dec)+' '+i.sufijo); if(i.pais!=null) r.push('País: '+fmt(i.pais,i.dec)+' '+i.sufijo);
+  document.getElementById('refs').textContent=r.join('   ');
+  const n=document.getElementById('nota'); n.hidden=!i.nota; n.textContent=i.nota||'';
+  document.getElementById('fuente').textContent='Fuente: '+i.fuente;
+}
+
+/* ficha */
+function ficha(){
+  document.getElementById('fichaNombre').textContent=D.distritos[distrito];
+  document.getElementById('perfil').textContent=D.perfiles[distrito]||'';
+  document.getElementById('distSel').innerHTML=IDS.map(d=>`<button class="pill ${d===distrito?'on':''}" type="button" data-d="${d}" aria-pressed="${d===distrito}">${D.distritos[d]}</button>`).join('');
+  document.querySelectorAll('#distSel .pill').forEach(b=>b.onclick=()=>elegir(b.dataset.d));
+  let capa='',h='';
+  D.indicadores.forEach(i=>{
+    if(i.capa!==capa){capa=i.capa;h+=`<tr class="capa"><td colspan="5">${capa}</td></tr>`;}
+    const p=pos(i), r=p.rango[distrito];
+    const lugar = i.peor && r ? `<span class="punto"><i style="background:${escala(p.t[distrito])}"></i>${r===1?'el más desfavorable':r===8?'el más favorable':r+'.º de 8'}</span>` : '<span class="u">contexto</span>';
+    h+=`<tr><td>${i.nombre}<span class="u">${i.lectura}</span></td><td class="n">${fmt(i.valores[distrito],i.dec)}</td><td class="n">${fmt(i.canton,i.dec)}</td><td class="n">${fmt(i.pais,i.dec)}</td><td>${lugar}</td></tr>`;
+  });
+  document.querySelector('#tablaFicha tbody').innerHTML=h;
+}
+function elegir(d){distrito=d;ficha();ranking();}
+
+/* huella */
+function huella(){
+  const comp=D.indicadores.filter(i=>i.peor);
+  let h='<thead><tr><th class="i">Indicador</th>'+IDS.map(d=>`<th>${D.distritos[d]}</th>`).join('')+'</tr></thead><tbody>';
+  comp.forEach(i=>{const p=pos(i); h+=`<tr><td class="i">${i.nombre}<small>${i.peor==='bajo'?'más bajo es peor':'más alto es peor'}</small></td>`+IDS.map(d=>`<td style="background:${color(i,p.t[d])}" title="${D.distritos[d]}: ${p.rango[d]||'-'}.º de 8 (1 = más desfavorable)">${fmt(i.valores[d],i.dec)}</td>`).join('')+'</tr>';});
+  document.getElementById('tablaHuella').innerHTML=h+'</tbody>';
+}
+
+/* hallazgos por certeza */
+function hallazgos(){
+  const niveles=[['hecho operativo','Hechos','3 o más fuentes independientes','--lima'],['hipótesis','Hipótesis','2 fuentes','--ama'],['señal','Señales','1 fuente','--muted']];
+  document.getElementById('escalones').innerHTML=niveles.map(([v,tit,sub,c])=>{
+    const hs=D.hallazgos.filter(h=>h.verdad===v); if(!hs.length) return '';
+    return `<div class="escalon"><h3><span class="marca-v" style="background:var(${c})"></span>${tit}<small>${sub}</small></h3><div class="hall">${hs.map(h=>`<article class="hallazgo"><h4>${h.titulo}</h4><ul>${h.puntos.map(p=>`<li>${p}</li>`).join('')}</ul><p class="src">Fuentes: ${h.fuentes.join(' · ')}</p>${h.distritos.length?`<button class="btn" type="button" data-d="${h.distritos[0]}">Abrir ficha de ${D.distritos[h.distritos[0]]}</button>`:''}</article>`).join('')}</div></div>`;
+  }).join('');
+  document.querySelectorAll('#escalones .btn').forEach(b=>b.onclick=()=>{elegir(b.dataset.d);document.getElementById('ficha').scrollIntoView();});
+}
+
+/* tendencias */
+function charts(){
+  if(!window.Chart) return;
+  graficos.forEach(g=>g.destroy()); graficos=[];
+  Chart.defaults.font.family='"Space Mono", monospace'; Chart.defaults.font.size=11;
+  Chart.defaults.color=css('--muted'); Chart.defaults.borderColor=css('--line');
+  const S=D.series, op={responsive:true,maintainAspectRatio:false,animation:reducido?false:{duration:600},plugins:{legend:{labels:{boxWidth:10,boxHeight:10}}},scales:{x:{grid:{display:false}}}};
+  const linea=(id,s,claves,cols,src)=>{document.getElementById(src).textContent='Fuente: '+s.fuente;
+    graficos.push(new Chart(document.getElementById(id),{type:'line',data:{labels:s.anios,datasets:claves.map((k,j)=>({label:k,data:s[k],borderColor:css(cols[j]),backgroundColor:css(cols[j]),borderWidth:2,tension:.3,pointRadius:2.5}))},options:{...op,plugins:{legend:{display:claves.length>1,labels:{boxWidth:10,boxHeight:10}}}}}));};
+  linea('gMadres',S.madres_adol,['Madres de 15 a 19 años'],['--mag'],'sMadres');
+  linea('gExcl',S.exclusion,['Cantón Upala','Costa Rica'],['--mag','--muted'],'sExcl');
+  document.getElementById('sDen').textContent='Fuente: '+S.denuncias.fuente;
+  graficos.push(new Chart(document.getElementById('gDen'),{type:'bar',data:{labels:S.denuncias.anios,datasets:[{label:'Cantón Upala',data:S.denuncias['Cantón Upala'],backgroundColor:css('--ama'),borderRadius:4}]},options:{...op,plugins:{legend:{display:false}}}}));
+  document.getElementById('sDec').textContent='Fuente: '+S.decomisos.fuente;
+  graficos.push(new Chart(document.getElementById('gDec'),{type:'bar',data:{labels:S.decomisos.anios,datasets:[['Marihuana','--lima'],['Crack','--mag'],['Cocaína','--cian']].map(([k,c])=>({label:k,data:S.decomisos[k],backgroundColor:css(c)}))},options:{...op,scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true}}}}));
+}
+
+/* región, diversidad y prensa */
+const etiqueta={'hecho operativo':'Hecho','hipótesis':'Hipótesis','señal':'Señal'};
+document.getElementById('regionCards').innerHTML=(D.contexto||[]).map(x=>`<article class="hallazgo"><div class="ambito">${x.ambito} · ${etiqueta[x.verdad]}</div><h4>${x.titulo}</h4><ul>${x.puntos.map(p=>`<li>${p}</li>`).join('')}</ul><p class="src">Fuente: ${x.fuente}</p></article>`).join('');
+if(D.diversidad){const v=D.diversidad;document.getElementById('diversidad').innerHTML=`<h3>${v.titulo}</h3><p>${v.texto}</p><ul>${v.puntos.map(p=>`<li>${p}</li>`).join('')}</ul><p class="prop"><b>Propuesta:</b> ${v.propuesta}</p><p class="src">Fuentes: ${v.fuente}</p>`;}
+const fecha=f=>{if(!f)return 'sin fecha';const [a,m]=f.split('-');return ['ene','feb','mar','abr','may','jun','jul','ago','set','oct','nov','dic'][+m-1]+'. '+a;};
+document.getElementById('listaPrensa').innerHTML=(D.prensa||[]).map(n=>`<li><a href="${n.url}" target="_blank" rel="noopener">${n.texto}</a><span class="meta${n.institucional?' inst':''}">${n.medio} · ${fecha(n.fecha)} · ${n.lugar}${n.institucional?' · comunicado institucional':''}</span></li>`).join('');
+
+/* límites */
+document.getElementById('tens').innerHTML=D.tensiones.map(t=>`<li>${t}</li>`).join('');
+document.getElementById('huecos').innerHTML=D.huecos.map(h=>`<li><b>${h.hueco}.</b> ${h.via}.</li>`).join('');
+document.querySelector('#tablaFuentes tbody').innerHTML=D.indicadores.map(i=>`<tr><td>${i.nombre}</td><td>${i.fuente}</td><td>${i.nota||''}</td></tr>`).join('');
+document.getElementById('gen').textContent=D.generado;
+
+function repintar(){colorearMapa(mHero,ids,false);document.getElementById('legHero').style.background=`linear-gradient(90deg,${escala(0)},${escala(.5)},${escala(1)})`;versus();ranking();ficha();huella();charts();}
+let rz; addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(ranking,150);});
+selector(); hallazgos(); repintar();
+})();
+</script>
+</body>
+</html>

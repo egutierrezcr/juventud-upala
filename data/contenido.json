@@ -1,0 +1,337 @@
+{
+  "hallazgos": [
+    {
+      "id": "H1",
+      "titulo": "Dos Ríos y San José (Pizote) concentran el rezago estructural del cantón",
+      "verdad": "hecho operativo",
+      "fuentes": [
+        "MIDEPLAN, IDS 2023",
+        "INEC, estimaciones Censo 2022",
+        "MEP, bases por centro 2018-2022",
+        "TSE, segunda ronda 2022"
+      ],
+      "distritos": [
+        "21306",
+        "21303"
+      ],
+      "puntos": [
+        "Índice de Desarrollo Social 2023 de 31,0 en ambos distritos: puestos 478 y 476 del país.",
+        "Hogares con al menos una carencia: 43,4% y 43,6%, frente a 35,1% del cantón y 19,7% del país.",
+        "De cada 100 estudiantes que entran a sétimo, llegan a undécimo 39 en Dos Ríos y 39 en San José (Pizote), frente a 54 en el cantón y 70 en el país (cohortes 2014-2018).",
+        "Repitencia en secundaria 2018-2022 de 9,94% y 8,60% (país 3,91%); reprobación definitiva 2018-2021 de 11,17% y 9,74% (país 5,49%).",
+        "La dimensión de participación del IDS es la más baja del cantón: 12,4 y 11,0.",
+        "Dos Ríos tiene además el menor acceso a internet (26,5% de viviendas) y el menor aseguramiento en la CCSS (56,2%).",
+        "También es donde menos se vota: en la segunda ronda presidencial de 2022 no votó el 68,0% en San José (Pizote) y el 63,9% en Dos Ríos, el 2.º y el 6.º abstencionismo más alto entre todos los distritos del país."
+      ]
+    },
+    {
+      "id": "H2",
+      "titulo": "La maternidad adolescente se concentra en Delicias y San José (Pizote)",
+      "verdad": "hecho operativo",
+      "fuentes": [
+        "INEC, estadísticas vitales 2020-2025",
+        "INEC, estimaciones Censo 2022",
+        "Ministerio de Salud, ASIS Upala 2023 (fecundidad general, indicio indirecto)"
+      ],
+      "distritos": [
+        "21305",
+        "21303"
+      ],
+      "puntos": [
+        "Entre 2020 y 2025, el 17,0% de los nacimientos en Delicias fue de madres menores de 20 años y el 7,6% de madres menores de 18. En el cantón son 11,7% y 5,2%.",
+        "San José (Pizote) es el segundo distrito: 12,4% de los nacimientos de madres menores de 20 años y 5,9% de menores de 18.",
+        "El Censo 2022 coincide: 6,1% de las adolescentes de San José (Pizote) y 5,6% de las de Delicias ya son madres, frente a 3,2% en el país.",
+        "En el cantón nacieron 26 bebés de niñas menores de 15 años entre 2020 y 2025: 6 en Delicias, 6 en San José (Pizote) y 6 en el distrito Upala. Por ley, cada caso es un delito sexual.",
+        "La tendencia baja en todos los distritos: en el cantón, los nacimientos de madres menores de 20 años pasaron de 24,5% (2010-2014) a 11,7% (2020-2025)."
+      ]
+    },
+    {
+      "id": "H3",
+      "titulo": "Delicias, Bijagua y Yolillal tienen la mayor deserción en secundaria",
+      "verdad": "señal",
+      "fuentes": [
+        "MEP, bases por centro 2018-2022"
+      ],
+      "distritos": [
+        "21305",
+        "21304",
+        "21307"
+      ],
+      "puntos": [
+        "Exclusión intra-anual 2018-2022: Delicias 4,63%, Bijagua 4,20% y Yolillal 4,11%, frente a 3,10% del país.",
+        "En el cantón, solo 54 de cada 100 estudiantes que entran a sétimo llegan a undécimo, frente a 70 en el país. En Delicias son 50 y en Bijagua 53.",
+        "Delicias también tiene la mayor proporción de estudiantes aplazados en 2022 (43,1%).",
+        "Yolillal tiene la menor asistencia a la educación de 5 a 24 años (70,6%, Censo 2022).",
+        "El cantón no tiene colegio académico nocturno ni IPEC: para jóvenes fuera del sistema solo hay CINDEA."
+      ]
+    },
+    {
+      "id": "H4",
+      "titulo": "La cabecera concentra la oferta de drogas y el delito contra la propiedad",
+      "verdad": "hecho operativo",
+      "fuentes": [
+        "ICD, decomisos 2018-2022",
+        "OIJ, Estadísticas Policiales",
+        "Observatorio de la Violencia",
+        "MSP, Sembremos Seguridad 2022"
+      ],
+      "distritos": [
+        "21301"
+      ],
+      "puntos": [
+        "El distrito Upala reúne el 68% de los eventos de decomiso del cantón (2018-2022).",
+        "Concentra el 53% de las denuncias y el 69% de los asaltos (2019-2025).",
+        "Tiene la tasa más alta de aprehensiones por Ley de Psicotrópicos (66,84 por 100.000, I semestre 2026); le sigue Bijagua (42,75).",
+        "En la consulta de Sembremos Seguridad, la población priorizó la venta y el consumo de drogas.",
+        "Según el PNUD, en el índice de vulnerabilidad a drogas de Upala pesa más la demanda (consumo): 0,561, frente a 0,096 de oferta y 0,084 de violencia."
+      ]
+    },
+    {
+      "id": "H5",
+      "titulo": "Exclusión de la protección social y del mundo digital",
+      "verdad": "señal",
+      "fuentes": [
+        "INEC, estimaciones Censo 2022 y Censo 2011"
+      ],
+      "distritos": [],
+      "puntos": [
+        "Solo el 64,7% de la población del cantón está asegurada en la CCSS (país 81,6%), y bajó desde 69,4% en 2011.",
+        "El 45,0% de las viviendas tiene internet (país 70,9%).",
+        "El 13,6% de la población nació en el extranjero."
+      ]
+    }
+  ],
+  "perfiles": {
+    "21301": "Cabecera. Concentra decomisos, denuncias y aprehensiones por drogas. Tiene el mejor IDS del cantón (51,0).",
+    "21302": "Intermedio en casi todos los indicadores. Tasa de violencia doméstica de 17,85 por 100.000 en el I semestre 2026.",
+    "21303": "Pobreza, reprobación y repitencia altas, maternidad adolescente (6,1%), participación mínima. Solo 39 de cada 100 que entran a sétimo llegan a undécimo. Segundo distrito más poblado.",
+    "21304": "Deserción en secundaria (4,20%). Segunda tasa de aprehensiones por drogas. Menos carencias que el resto.",
+    "21305": "La mayor deserción (4,63%) y el mayor porcentaje de aplazados. 18% de población nacida en el extranjero. Fecundidad alta.",
+    "21306": "El más rezagado: carencias, conectividad, reprobación y aseguramiento. Solo 39 de cada 100 que entran a sétimo llegan a undécimo. Menor dimensión económica del IDS (17,8).",
+    "21307": "La menor asistencia educativa (70,6%) y deserción alta. Mayor tasa de violencia doméstica del semestre (números pequeños).",
+    "21308": "Maternidad adolescente (5,9%) y aplazados (39,4%). Repunte de eventos de crack en 2022."
+  },
+  "tensiones": [
+    "El Censo 2022 tuvo 61% de cobertura de viviendas: el INEC publica estimaciones. Dos series de población del INEC difieren hasta 24% en algunos distritos.",
+    "Las cifras de empleo por distrito del Censo 2022 salen inverosímiles (desempleo derivado de 44% en Dos Ríos) y se excluyeron.",
+    "Las bases por centro del MEP solo llegan a 2022; en 2018 hay un quiebre de serie nacional en la exclusión.",
+    "Decomisos y aprehensiones miden la acción policial, no el consumo.",
+    "En los datos del OIJ, el 48,5% de las víctimas no tiene edad registrada: no hay un indicador de seguridad por edad joven.",
+    "El ASIS Upala 2023 tiene errores internos de unidades y periodos.",
+    "Las notas de prensa sirven para detectar temas, no como fuente de cifras. Los comunicados institucionales se marcan como tales."
+  ],
+  "huecos": [
+    {
+      "hueco": "Consumo de sustancias y salud mental por distrito",
+      "via": "Solicitud al Área de Salud Upala (CCSS) y al Área Rectora del Ministerio de Salud"
+    },
+    {
+      "hueco": "Atenciones del PANI por tipo y distrito",
+      "via": "Solicitud a la Oficina Local del PANI en Upala"
+    },
+    {
+      "hueco": "Deserción 2023-2025 por colegio",
+      "via": "Solicitud a la Dirección Regional de Educación Norte-Norte"
+    },
+    {
+      "hueco": "Jóvenes que no estudian ni trabajan por distrito",
+      "via": "No hay dato publicado: levantamiento propio"
+    },
+    {
+      "hueco": "La voz de adolescentes",
+      "via": "Sembremos Seguridad no consultó a menores de 18: consulta propia por distrito"
+    }
+  ],
+  "verdad": {
+    "hecho operativo": "3 o más fuentes independientes coinciden",
+    "hipótesis": "2 fuentes independientes",
+    "señal": "1 fuente"
+  },
+  "contexto": [
+    {
+      "titulo": "Violencia en los centros educativos de la región",
+      "ambito": "Dirección Regional de Educación Zona Norte-Norte, 2023",
+      "verdad": "señal",
+      "puntos": [
+        "Ciberacoso: 2,52 casos por cada 1.000 estudiantes, frente a 1,37 en el país (4.º lugar entre 27 regiones).",
+        "Violencia de docentes y de otro personal hacia estudiantes: 6.º lugar entre 27 regiones.",
+        "Los casos registrados de lesiones autoinfligidas o riesgo suicida están por debajo del país (23.º lugar). Puede ser subregistro: en 2020, una funcionaria de salud alertó que los intentos de suicidio de 10 a 17 años en Upala pasaron de 3 en 2017 a 25 en 2019."
+      ],
+      "fuente": "MEP, Situaciones de violencia en centros educativos 2018-2023 (tasas: cálculo propio); UNA Comunica, 3 de marzo de 2020"
+    },
+    {
+      "titulo": "Embarazo y maternidad en estudiantes",
+      "ambito": "Dirección Regional de Educación Zona Norte-Norte, 2016-2019",
+      "verdad": "señal",
+      "puntos": [
+        "Alumnas menores de edad embarazadas: 21, 28, 32 y 31 por año.",
+        "Alumnas menores de edad que ya son madres: 34, 40, 32 y 42 por año."
+      ],
+      "fuente": "MEP, Estudiantes embarazadas, madres y padres menores de edad 2016-2019 (Cuadros 3 y 4)"
+    },
+    {
+      "titulo": "Población migrante",
+      "ambito": "Área de Salud de Upala, 2023",
+      "verdad": "señal",
+      "puntos": [
+        "12.523 personas extranjeras adscritas al Área de Salud; 12.031 nacidas en Nicaragua.",
+        "Estudiantes extranjeros en 2021: 4,7% en primaria y 3,6% en secundaria."
+      ],
+      "fuente": "Municipalidad de Upala, Política Municipal de Movilidad Humana 2024-2034 (datos de la CCSS y el MEP)"
+    },
+    {
+      "titulo": "Participación electoral joven",
+      "ambito": "Cantón de Upala, segunda ronda presidencial 2022",
+      "verdad": "señal",
+      "puntos": [
+        "No votó el 65,8% de 18 a 19 años, el 69,0% de 20 a 24 años, el 65,1% de 25 a 29 años y el 57,1% de 30 a 34 años.",
+        "En todo el padrón del cantón, el abstencionismo fue de 55,0%."
+      ],
+      "fuente": "TSE, Estadísticas del Sufragio, segunda ronda 2022 (Cuadros 1.4 y 5.3)"
+    },
+    {
+      "titulo": "Prevención en escuelas y colegios",
+      "ambito": "Dirección Regional de Educación Zona Norte-Norte, 2019",
+      "verdad": "señal",
+      "puntos": [
+        "El programa Convivir llegó al 73,0% de la matrícula de primaria de la región, frente a 39,4% en el país.",
+        "En secundaria, el programa de prevención PDEIT llegó solo al 4,8%, frente a 10,4% en el país."
+      ],
+      "fuente": "MEP, Departamento de Análisis Estadístico, programas de prevención del uso indebido de drogas 2014-2019"
+    }
+  ],
+  "diversidad": {
+    "titulo": "Juventud LGBTIQ+: lo que no se mide",
+    "texto": "En Costa Rica no existe ninguna estadística oficial sobre población LGBTIQ+ por cantón o distrito. Estos son los datos más cercanos a Upala; ninguno permite estimar cuántas personas jóvenes LGBTIQ+ viven en el cantón.",
+    "puntos": [
+      "En la encuesta cantonal de juventud de Upala de 2010 (855 personas de 15 a 35 años), el 35,8% dijo que en el cantón hay discriminación por preferencia sexual. Es la única medición local y tiene 16 años.",
+      "Región Huetar Norte, 2026: el 1,1% de las personas jóvenes reporta discriminación por orientación sexual o identidad de género en su centro educativo (país: 2,4%).",
+      "Provincia de Alajuela: 565 matrimonios entre personas del mismo sexo entre 2020 y 2024. El dato por cantón existe en el INEC, pero solo por solicitud.",
+      "El MEP registró 83 casos de discriminación por orientación sexual y 35 por identidad de género en todo el país en 2023."
+    ],
+    "fuente": "CPJ, Encuesta cantonal de juventud de Upala 2010 (Gráfico 23); CPJ, IV Encuesta Nacional de Juventudes 2026 (Cuadro 6); INEC, matrimonios 2020-2024; MEP, Situaciones de violencia 2018-2023",
+    "propuesta": "Incluir en una consulta propia preguntas anónimas sobre discriminación, comparables con las de 2010, y reportar solo resultados agregados."
+  },
+  "prensa": [
+    {
+      "texto": "Estudiantes del liceo de Cuatro Bocas denuncian agresión policial durante una protesta",
+      "lugar": "Aguas Claras",
+      "medio": "Teletica",
+      "fecha": "2019-06-26",
+      "url": "https://www.teletica.com/sucesos/estudiantes-del-liceo-de-upala-denuncian-ser-golpeados-y-atacados-con-gases-por-la-policia_229395",
+      "institucional": false
+    },
+    {
+      "texto": "Estudiantes de Upala reclaman por las deficiencias de la infraestructura de sus colegios",
+      "lugar": "Delicias y Upala",
+      "medio": "Delfino.cr",
+      "fecha": "2025-03-07",
+      "url": "https://delfino.cr/2025/03/estudiantes-de-canas-y-upala-alzan-la-voz-por-deficiencias-en-infraestructura-educativa",
+      "institucional": false
+    },
+    {
+      "texto": "Inauguran el Colegio Científico de Upala, con la UNED",
+      "lugar": "Upala",
+      "medio": "MEP",
+      "fecha": "2025-08-08",
+      "url": "https://www.mep.go.cr/noticias/mep-uned-inauguran-colegio-cientifico-upala",
+      "institucional": true
+    },
+    {
+      "texto": "Alerta por el aumento de intentos de suicidio en adolescentes de Upala",
+      "lugar": "Cantón",
+      "medio": "UNA Comunica",
+      "fecha": "2020-03-03",
+      "url": "https://www.unacomunica.una.ac.cr/index.php/marzo-2020/2840-alertan-incremento-de-intentos-de-suicidio-en-upala",
+      "institucional": true
+    },
+    {
+      "texto": "Detienen a seis personas por vender drogas a domicilio",
+      "lugar": "Cantón",
+      "medio": "La Nacion",
+      "fecha": "2023-12-08",
+      "url": "https://www.nacion.com/sucesos/narcotrafico/cinco-hombres-y-una-mujer-detenidos-por-vender/FZH4P5UNUBFS5ODOMDGXFSJS2E/story/",
+      "institucional": false
+    },
+    {
+      "texto": "Detienen a dos sospechosos de venta de drogas en el sector de Brasilia",
+      "lugar": "Dos Ríos",
+      "medio": "CRHoy",
+      "fecha": "2024-11-19",
+      "url": "https://crhoy.com/nacionales/detienen-a-2-sospechosos-de-venta-de-drogas-en-upala/",
+      "institucional": false
+    },
+    {
+      "texto": "Detienen a un sospechoso de violar a una niña de 12 años",
+      "lugar": "Upala",
+      "medio": "Teletica",
+      "fecha": "2025-01-15",
+      "url": "https://www.teletica.com/sucesos/policia-detiene-supuesto-violador-de-nina-de-12-anios-en-upala_376865",
+      "institucional": false
+    },
+    {
+      "texto": "El PANI atiende a colegiales involucrados en un video sexual en el CTP de Upala",
+      "lugar": "Upala",
+      "medio": "CRHoy",
+      "fecha": "2025-10-08",
+      "url": "https://crhoy.com/pani-atendio-a-colegiales-involucrados-en-video-sexual-en-ctp-de-upala/",
+      "institucional": false
+    },
+    {
+      "texto": "Entregan materiales para educar a la niñez sobre la trata de personas",
+      "lugar": "Delicias",
+      "medio": "OIM Costa Rica",
+      "fecha": "2024-08-14",
+      "url": "https://costarica.iom.int/es/news/naciones-unidas-y-policia-de-fronteras-entregan-en-upala-materiales-educativos-para-educar-la-ninez-sobre-la-trata-de-personas-y-trafico-ilicito-de-migrantes",
+      "institucional": true
+    },
+    {
+      "texto": "ACNUR abre una oficina en Upala por el aumento de solicitudes de refugio",
+      "lugar": "Cantón",
+      "medio": "El Mundo CR",
+      "fecha": "2018-12-10",
+      "url": "https://elmundo.cr/costa-rica/acnur-inaugura-oficina-en-upala-ante-incremento-de-solicitudes-de-refugio/",
+      "institucional": false
+    },
+    {
+      "texto": "Tras el huracán Otto faltaban cuadernos y uniformes para volver a clases",
+      "lugar": "Upala",
+      "medio": "La Nacion",
+      "fecha": "2017-02-06",
+      "url": "https://www.nacion.com/el-pais/educacion/en-upala-faltan-cuadernos-y-uniformes-pero-hay-ganas-de-volver-a-clases-para-dejar-atras-la-sombra-del-huracan/FMVFTWYJCRA6DDTO55DY3ZYNBI/story/",
+      "institucional": false
+    },
+    {
+      "texto": "Bijagua se recupera del huracán Otto con el turismo",
+      "lugar": "Bijagua",
+      "medio": "La Teja",
+      "fecha": "2025-12-15",
+      "url": "https://www.lateja.cr/tiempo-libre/turismo/bijagua-en-upala-asi-se-levanto-nueve-anos-despues/YI46XRRP45AFHBCYNTTSVISL3U/story/",
+      "institucional": false
+    },
+    {
+      "texto": "Estudiantes en peligro por el desvío de un río",
+      "lugar": "Aguas Claras",
+      "medio": "Telediario",
+      "fecha": "2024-08-01",
+      "url": "https://www.telediario.cr/videos/television/estudiantes-corren-peligro-desvio-rio-aguas-claras-upala",
+      "institucional": false
+    },
+    {
+      "texto": "Evacuan a menores de un centro educativo afectado por lluvias",
+      "lugar": "Cantón",
+      "medio": "CRHoy",
+      "fecha": "2025-07-22",
+      "url": "https://crhoy.com/evacuan-a-7-menores-y-2-adultos-de-centro-educativo-afectado-por-lluvias-en-upala/",
+      "institucional": false
+    },
+    {
+      "texto": "En la zona norte baja el subempleo, pero miles dejan de buscar trabajo",
+      "lugar": "Región",
+      "medio": "San Carlos Digital",
+      "fecha": "2026-04-22",
+      "url": "https://sancarlosdigital.com/cae-el-trabajo-a-medias-en-la-zona-norte-pero-miles-se-rinden-de-buscar-empleo/",
+      "institucional": false
+    }
+  ]
+}
